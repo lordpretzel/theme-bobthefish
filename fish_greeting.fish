@@ -6,7 +6,15 @@ function fish_greeting -d "What's up, fish?"
     command -s uptime >/dev/null
     and command uptime
 
-    ~/scripts/netstats.sh
+    switch (uname)
+    case Linux
+        uname -a
+        lsb_release -a
+    case Darwin
+        ~/scripts/netstats.sh
+    case '*'
+        echo Hi, stranger!
+    end
 
     set_color normal
 end
